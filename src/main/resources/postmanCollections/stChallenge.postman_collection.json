@@ -1,0 +1,86 @@
+{
+	"info": {
+		"_postman_id": "7fd654f3-5c0e-491d-9594-f0a0f46743eb",
+		"name": "stChallenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "46167435"
+	},
+	"item": [
+		{
+			"name": "Adherir empresas",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"cuit\": \"20-12345679-5\",\r\n  \"razon_social\": \"Empresa aaa SA\",\r\n  \"fecha_adhesion\": \"2025-06-01\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/empresas/adherir",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"empresas",
+						"adherir"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Empresas adheridas del ultimo mes",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"cuit\": \"20-12345679-5\",\r\n  \"razon_social\": \"Empresa aaa SA\",\r\n  \"fecha_adhesion\": \"2025-06-01\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/empresas/adheridas-ultimo-mes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"empresas",
+						"adheridas-ultimo-mes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Transferencias del ultimo mes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/empresas/transferencias-ultimo-mes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"empresas",
+						"transferencias-ultimo-mes"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

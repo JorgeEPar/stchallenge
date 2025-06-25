@@ -1,0 +1,1 @@
+1- Asumi que no hacia falta implementar docker pero seria posible si es necesario.
