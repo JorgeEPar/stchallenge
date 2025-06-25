@@ -6,9 +6,11 @@ import java.time.LocalDate;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
-public class TransferenciaEntity {
+@Table(name = "transferencia")
+public final class TransferenciaEntity {
 
 	@Id
 	@GeneratedValue
@@ -18,6 +20,8 @@ public class TransferenciaEntity {
 	private String cuentaDebito;
 	private String cuentaCredito;
 	private LocalDate fecha;
+	
+	public TransferenciaEntity() {}
 
 	public Long getId() {
 		return id;
