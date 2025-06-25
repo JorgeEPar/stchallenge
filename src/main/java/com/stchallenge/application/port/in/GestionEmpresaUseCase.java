@@ -9,4 +9,6 @@ public interface GestionEmpresaUseCase {
 	Empresa adherirEmpresa(Empresa empresa);
 
 	List<Empresa> obtenerEmpresasAdheridasUltimoMes();
+
+	List<Empresa> obtenerEmpresasConTransferenciasUltimoMes();
 }

@@ -7,15 +7,18 @@ import org.springframework.stereotype.Service;
 
 import com.stchallenge.application.port.in.GestionEmpresaUseCase;
 import com.stchallenge.application.port.out.EmpresaPort;
+import com.stchallenge.application.port.out.TransferenciaPort;
 import com.stchallenge.domain.model.Empresa;
 
 @Service
 public class EmpresaServiceImpl implements GestionEmpresaUseCase {
 
 	private final EmpresaPort empresaPort;
+	private final TransferenciaPort transferenciaPort;
 
-	public EmpresaServiceImpl(EmpresaPort empresaPort) {
+	public EmpresaServiceImpl(EmpresaPort empresaPort, TransferenciaPort transferenciaPort) {
 		this.empresaPort = empresaPort;
+		this.transferenciaPort = transferenciaPort;
 	}
 
 	@Override
@@ -27,5 +30,10 @@ public class EmpresaServiceImpl implements GestionEmpresaUseCase {
 	@Override
 	public List<Empresa> obtenerEmpresasAdheridasUltimoMes() {
 		return empresaPort.buscarAdheridasDesde(LocalDate.now().minusMonths(1));
+	}
+
+	@Override
+	public List<Empresa> obtenerEmpresasConTransferenciasUltimoMes() {
+		return transferenciaPort.buscarEmpresasConTransferenciasDesde(LocalDate.now().minusMonths(1));
 	}
 }

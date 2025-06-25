@@ -34,8 +34,17 @@ public class EmpresaController {
 	@GetMapping("/adheridas-ultimo-mes")
 	public List<EmpresaResponse> empresasAdheridas() {
 		final List<Empresa> empresasAdheridas = gestionEmpresaUseCase.obtenerEmpresasAdheridasUltimoMes();
+		return mapToEmpresaResponse(empresasAdheridas);
+	}
+
+	@GetMapping("/transferencias-ultimo-mes")
+	public List<EmpresaResponse> empresasConTransferencias() {
+		final List<Empresa> empresasAdheridas = gestionEmpresaUseCase.obtenerEmpresasConTransferenciasUltimoMes();
+		return mapToEmpresaResponse(empresasAdheridas);
+	}
+
+	private List<EmpresaResponse> mapToEmpresaResponse(final List<Empresa> empresasAdheridas) {
 		return empresasAdheridas.stream().map(e -> new EmpresaResponse(e.cuit(), e.razonSocial(), e.fechaAdhesion()))
 				.collect(Collectors.toList());
 	}
-
 }
