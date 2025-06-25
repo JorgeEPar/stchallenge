@@ -1,5 +1,9 @@
 package com.stchallenge.infrastructure.controller;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,5 +30,12 @@ public class EmpresaController {
 		final Empresa empresaAdherida = this.gestionEmpresaUseCase.adherirEmpresa(empresa);
 		return new EmpresaResponse(empresaAdherida.cuit(), empresa.razonSocial(), empresaAdherida.fechaAdhesion());
 	}
-	
+
+	@GetMapping("/adheridas-ultimo-mes")
+	public List<EmpresaResponse> empresasAdheridas() {
+		final List<Empresa> empresasAdheridas = gestionEmpresaUseCase.obtenerEmpresasAdheridasUltimoMes();
+		return empresasAdheridas.stream().map(e -> new EmpresaResponse(e.cuit(), e.razonSocial(), e.fechaAdhesion()))
+				.collect(Collectors.toList());
+	}
+
 }

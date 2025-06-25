@@ -1,5 +1,9 @@
 package com.stchallenge.infrastructure.adapter;
 
+import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Repository;
 
 import com.stchallenge.application.port.out.EmpresaPort;
@@ -21,8 +25,17 @@ public class EmpresaAdapterJpa implements EmpresaPort {
 		EmpresaEntity entity = new EmpresaEntity(empresa.cuit(), empresa.razonSocial(), empresa.fechaAdhesion());
 		return toDomain(repository.save(entity));
 	}
+	
+	@Override
+	public List<Empresa> buscarAdheridasDesde(LocalDate fecha) {
+		return repository.findByFechaAdhesionAfter(fecha)
+				.stream()
+				.map(this::toDomain)
+				.collect(Collectors.toList());
+	}
 
 	private Empresa toDomain(EmpresaEntity e) {
 		return new Empresa(e.getCuit(), e.getRazonSocial(), e.getFechaAdhesion());
 	}
+
 }
