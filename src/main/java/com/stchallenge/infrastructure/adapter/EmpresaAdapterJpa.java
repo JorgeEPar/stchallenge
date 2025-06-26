@@ -34,8 +34,12 @@ public class EmpresaAdapterJpa implements EmpresaPort {
 				.collect(Collectors.toList());
 	}
 
+	@Override
+	public boolean existeAdheridaPorCuit(String cuit) {
+		return repository.existsById(cuit);
+	}
+
 	private Empresa toDomain(EmpresaEntity e) {
 		return new Empresa(e.getCuit(), e.getRazonSocial(), e.getFechaAdhesion());
 	}
-
 }

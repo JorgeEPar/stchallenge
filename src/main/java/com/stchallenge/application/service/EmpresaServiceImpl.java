@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.stchallenge.application.port.in.GestionEmpresaUseCase;
 import com.stchallenge.application.port.out.EmpresaPort;
 import com.stchallenge.application.port.out.TransferenciaPort;
+import com.stchallenge.domain.exception.BusinessException;
 import com.stchallenge.domain.model.Empresa;
 
 @Service
@@ -23,6 +24,9 @@ public class EmpresaServiceImpl implements GestionEmpresaUseCase {
 
 	@Override
 	public Empresa adherirEmpresa(Empresa empresa) {
+		if (empresaPort.existeAdheridaPorCuit(empresa.cuit())) {
+			throw new BusinessException("La empresa con el CUIT " + empresa.cuit() + " ya esta adherida.");
+		}
 		Empresa emp = new Empresa(empresa.cuit(), empresa.razonSocial(), LocalDate.now());
 		return empresaPort.guardar(emp);
 	}
