@@ -14,6 +14,8 @@ import com.stchallenge.domain.model.Empresa;
 import com.stchallenge.infrastructure.controller.dto.EmpresaRequest;
 import com.stchallenge.infrastructure.controller.dto.EmpresaResponse;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/empresas")
 public class EmpresaController {
@@ -25,7 +27,7 @@ public class EmpresaController {
 	}
 
 	@PostMapping("/adherir")
-	public EmpresaResponse adherirEmpresa(@RequestBody EmpresaRequest request) {
+	public EmpresaResponse adherirEmpresa(@Valid @RequestBody EmpresaRequest request) {
 		final Empresa empresa = new Empresa(request.getCuit(), request.getRazon_social(), null);
 		final Empresa empresaAdherida = this.gestionEmpresaUseCase.adherirEmpresa(empresa);
 		return new EmpresaResponse(empresaAdherida.cuit(), empresa.razonSocial(), empresaAdherida.fechaAdhesion());

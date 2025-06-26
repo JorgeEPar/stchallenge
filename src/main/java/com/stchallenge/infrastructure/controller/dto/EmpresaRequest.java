@@ -1,6 +1,12 @@
 package com.stchallenge.infrastructure.controller.dto;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+
 public class EmpresaRequest {
+	
+	@NotBlank(message = "El CUIT es obligatorio.")
+	@Pattern(regexp = "^\\d{2}-\\d{8}-\\d{1}$", message = "El CUIT posee formato invalido.")
 	private String cuit;
 	private String razon_social;
 
