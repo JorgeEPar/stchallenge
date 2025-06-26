@@ -24,7 +24,7 @@ Datos de la transferencia: Importe, Id Empresa, Cuenta Débito, Cuenta Crédito.
 - Maven 3.9.6
 
 ## Como ejecutar la aplicacion:
-./mvn spring-boot:run
+  mvn spring-boot:run
 
 La app quedara levantada en: http://localhost:8080
 
