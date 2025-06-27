@@ -12,12 +12,12 @@ import com.stchallenge.domain.exception.BusinessException;
 import com.stchallenge.domain.model.Empresa;
 
 @Service
-public class EmpresaServiceImpl implements GestionEmpresaUseCase {
+public class GestionEmpresaService implements GestionEmpresaUseCase {
 
 	private final EmpresaPort empresaPort;
 	private final TransferenciaPort transferenciaPort;
 
-	public EmpresaServiceImpl(EmpresaPort empresaPort, TransferenciaPort transferenciaPort) {
+	public GestionEmpresaService(EmpresaPort empresaPort, TransferenciaPort transferenciaPort) {
 		this.empresaPort = empresaPort;
 		this.transferenciaPort = transferenciaPort;
 	}

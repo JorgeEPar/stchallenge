@@ -17,17 +17,17 @@ import com.stchallenge.application.port.out.TransferenciaPort;
 import com.stchallenge.domain.exception.BusinessException;
 import com.stchallenge.domain.model.Empresa;
 
-class EmpresaServiceImplTest {
+class GestionEmpresaServiceTest {
 
 	private EmpresaPort empresaPort;
 	private TransferenciaPort transferenciaPort;
-	private EmpresaServiceImpl service;
+	private GestionEmpresaService service;
 
 	@BeforeEach
 	void setUp() {
 		empresaPort = mock(EmpresaPort.class);
 		transferenciaPort = mock(TransferenciaPort.class);
-		service = new EmpresaServiceImpl(empresaPort, transferenciaPort);
+		service = new GestionEmpresaService(empresaPort, transferenciaPort);
 	}
 
 	@Test
