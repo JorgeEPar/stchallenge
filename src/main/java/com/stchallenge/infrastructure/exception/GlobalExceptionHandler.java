@@ -23,7 +23,7 @@ public class GlobalExceptionHandler {
 		List<String> errors = ex.getBindingResult().getFieldErrors().stream()
 				.map(DefaultMessageSourceResolvable::getDefaultMessage).collect(Collectors.toList());
 
-		body.put("errors", errors);
+		body.put("Request validation errors", errors);
 
 		return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
 	}

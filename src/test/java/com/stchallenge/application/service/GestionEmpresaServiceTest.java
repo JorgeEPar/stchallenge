@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
 
 import com.stchallenge.application.port.out.EmpresaPort;
 import com.stchallenge.application.port.out.TransferenciaPort;
-import com.stchallenge.domain.exception.BusinessException;
+import com.stchallenge.domain.exception.AdhesionEmpresaException;
 import com.stchallenge.domain.model.Empresa;
 
 class GestionEmpresaServiceTest {
@@ -54,7 +54,7 @@ class GestionEmpresaServiceTest {
 
 		when(empresaPort.existeAdheridaPorCuit(cuit)).thenReturn(true);
 
-		BusinessException e = assertThrows(BusinessException.class, () -> {
+		AdhesionEmpresaException e = assertThrows(AdhesionEmpresaException.class, () -> {
 			service.adherirEmpresa(empresa);
 		});
 
