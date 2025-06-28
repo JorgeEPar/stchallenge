@@ -18,11 +18,11 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/empresas")
-public class EmpresaController {
+public class GestionEmpresaController {
 
 	private final GestionEmpresaUseCase gestionEmpresaUseCase;
 
-	public EmpresaController(GestionEmpresaUseCase gestionEmpresaUseCase) {
+	public GestionEmpresaController(GestionEmpresaUseCase gestionEmpresaUseCase) {
 		this.gestionEmpresaUseCase = gestionEmpresaUseCase;
 	}
 
