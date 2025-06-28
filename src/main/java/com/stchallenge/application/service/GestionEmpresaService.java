@@ -24,6 +24,9 @@ public class GestionEmpresaService implements GestionEmpresaUseCase {
 
 	@Override
 	public Empresa adherirEmpresa(Empresa empresa) {
+		if (empresa.cuit() == null || empresa.cuit().isBlank()) {
+			throw new AdhesionEmpresaException("El CUIT no puede ser nulo o vacio.");
+		}
 		if (empresaPort.existeAdheridaPorCuit(empresa.cuit())) {
 			throw new AdhesionEmpresaException("La empresa con el CUIT " + empresa.cuit() + " ya esta adherida.");
 		}
